@@ -1,0 +1,14 @@
+<% if @patients.any?() %>
+  <h3>Patients:</h3>
+
+  <ul>
+    <% @patients.each() do |patient| %>
+      <li><a href="/patients/<%= patient.id()%>"><%= patient.name() %></a> </li>
+    <% end %>
+  </ul>
+
+<% else %>
+
+    <p>There are no doctors yet.</p>
+
+<% end %>

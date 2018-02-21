@@ -35,3 +35,21 @@ get('/doctors/:id') do
   @doctor = Doctor.find(params.fetch("id").to_i())
   erb(:doctor)
 end
+
+get('/patients/new') do
+  erb(:patient_form)
+end
+
+get('/patients') do
+  @patients = Patient.all()
+  erb(:patients)
+end
+
+post('/patients') do
+  name = params.fetch('name')
+  dob = params.fetch('dob')
+  patient = Patient.new({:name => name, :dob => dob, :doctor_id => nil, :id => nil})
+  patient.save()
+  @patients = Patient.all()
+  erb(:patient_success)
+end

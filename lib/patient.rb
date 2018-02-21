@@ -22,7 +22,7 @@ class Patient
   end
 
   def save
-    result = DB.exec("INSERT INTO patients (name, dob, doctor_id) VALUES ('#{@name}', '#{@dob}', #{@doctor_id}) RETURNING id;")
+    result = DB.exec("INSERT INTO patients (name, dob) VALUES ('#{@name}', '#{@dob}') RETURNING id;")
     @id = result.first().fetch("id").to_i()
   end
 
